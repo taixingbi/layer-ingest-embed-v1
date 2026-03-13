@@ -25,6 +25,5 @@ Create `.env`:
 ## Usage
 
 ```bash
-python main.py --data-dir ./data --collection rag_dev
-python main.py --data-dir ./data --collection rag_dev --recreate  # when changing VECTOR_SIZE
+python main.py --data-dir ./data --collection taixing_knowledge --env dev
 ```

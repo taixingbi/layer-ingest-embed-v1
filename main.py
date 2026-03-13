@@ -6,6 +6,16 @@ embeddings), and upserts into a Qdrant collection.
 """
 import argparse
 
+from dotenv import load_dotenv
+
+# Load --env before config so .env.{env} overrides
+_load_parser = argparse.ArgumentParser()
+_load_parser.add_argument("--env")
+_load_args, _ = _load_parser.parse_known_args()
+load_dotenv()
+if _load_args.env:
+    load_dotenv(f".env.{_load_args.env}")
+
 from qdrant_client import QdrantClient
 from qdrant_client.http.exceptions import UnexpectedResponse
 
@@ -38,5 +48,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest JSON into Qdrant with embeddings.")
     parser.add_argument("--data-dir", default=DATA_DIR, help="Directory with *.json files")
     parser.add_argument("--collection", default=COLLECTION_NAME, help="Qdrant collection name")
-    args = parser.parse_args()
-    run(data_dir=args.data_dir, collection_name=args.collection)
+    parser.add_argument("--env", help="Environment (loads .env.{env}, appends to collection name)")
+    args, _ = parser.parse_known_args()
+    collection_name = args.collection
+    if args.env:
+        collection_name = f"{args.collection}_{args.env}"
+    run(data_dir=args.data_dir, collection_name=collection_name)
