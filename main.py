@@ -13,7 +13,7 @@ from config import COLLECTION_NAME, DATA_DIR, QDRANT_API_KEY, QDRANT_URL
 from ingest import ensure_collection, ingest
 
 
-def run(*, data_dir: str, collection_name: str, recreate: bool = False) -> None:
+def run(*, data_dir: str, collection_name: str) -> None:
     print("Connecting to Qdrant …")
     client = QdrantClient(
         url=QDRANT_URL,
@@ -22,7 +22,7 @@ def run(*, data_dir: str, collection_name: str, recreate: bool = False) -> None:
     )
 
     try:
-        ensure_collection(client, collection_name=collection_name, recreate=recreate)
+        ensure_collection(client, collection_name=collection_name)
     except UnexpectedResponse as e:
         if e.status_code == 403:
             print("Error: 403 Forbidden — Qdrant rejected the request.")
@@ -38,10 +38,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Ingest JSON into Qdrant with embeddings.")
     parser.add_argument("--data-dir", default=DATA_DIR, help="Directory with *.json files")
     parser.add_argument("--collection", default=COLLECTION_NAME, help="Qdrant collection name")
-    parser.add_argument(
-        "--recreate",
-        action="store_true",
-        help="Delete and recreate collection (use when changing VECTOR_SIZE)",
-    )
     args = parser.parse_args()
-    run(data_dir=args.data_dir, collection_name=args.collection, recreate=args.recreate)
+    run(data_dir=args.data_dir, collection_name=args.collection)

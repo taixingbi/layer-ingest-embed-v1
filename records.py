@@ -1,6 +1,9 @@
-"""Stream (id, embedding, payload) from JSON files. Embeds on-the-fly when missing."""
+"""Stream (source_file, points) from JSON files. Embeds on-the-fly when missing."""
+import hashlib
 import json
 from pathlib import Path
+
+from qdrant_client.http.models import PointStruct
 
 from config import VECTOR_SIZE
 from embed import embed_text
@@ -45,12 +48,11 @@ def _parse_json_file(path: Path) -> list[dict]:
 
 
 def iter_records(data_dir: str):
-    """Yield (id, embedding, payload) from all *.json in data_dir."""
+    """Yield (source_file, [PointStruct, ...]) for each *.json file."""
     paths = sorted(Path(data_dir).glob("*.json"))
     if not paths:
         raise FileNotFoundError(f"No JSON files in: {data_dir}")
 
-    point_id = 0
     for path in paths:
         print(f"  Reading {path.name} …")
         try:
@@ -61,7 +63,8 @@ def iter_records(data_dir: str):
 
         source_file = path.name
         record_type = path.stem
-        for record in records:
+        points = []
+        for i, record in enumerate(records):
             embedding = record.get("embedding")
             if not embedding or len(embedding) != VECTOR_SIZE:
                 try:
@@ -69,7 +72,12 @@ def iter_records(data_dir: str):
                 except Exception as e:
                     print(f"    ⚠ Skipping: {e}")
                     continue
-            yield point_id, embedding, build_payload(
+            point_id = int(hashlib.md5(f"{source_file}_{i}".encode()).hexdigest()[:16], 16)
+            payload = build_payload(
                 record, source_file=source_file, record_type=record_type
             )
-            point_id += 1
+            points.append(
+                PointStruct(id=point_id, vector=embedding, payload=payload)
+            )
+        if points:
+            yield source_file, points

@@ -25,4 +25,4 @@ VECTOR_SIZE = int(os.getenv("VECTOR_SIZE", "1024"))
 BATCH_SIZE = 20
 
 # Keys to copy from record into payload when present
-PAYLOAD_META_KEYS = ("metadata", "contact", "source")
+PAYLOAD_META_KEYS = ("metadata", "contact", "source", "id", "category", "tags", "keywords", "priority")
