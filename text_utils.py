@@ -3,10 +3,14 @@
 MAX_PAYLOAD_TEXT = 2000
 
 
+def truncate_for_payload(raw: str) -> str:
+    """Truncate text stored on Qdrant payload."""
+    return raw[:MAX_PAYLOAD_TEXT] if len(raw) > MAX_PAYLOAD_TEXT else raw
+
+
 def chunk_text(record: dict) -> str:
     """Return embeddable / stored text (truncated for payload)."""
-    raw = embedding_text(record)
-    return raw[:MAX_PAYLOAD_TEXT] if len(raw) > MAX_PAYLOAD_TEXT else raw
+    return truncate_for_payload(embedding_text(record))
 
 
 def embedding_text(record: dict) -> str:

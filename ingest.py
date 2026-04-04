@@ -8,13 +8,19 @@ from config import BATCH_SIZE, COLLECTION_NAME, VECTOR_SIZE
 from records import iter_records
 
 
+def _collection_exists(client: QdrantClient, name: str) -> bool:
+    exists = getattr(client, "collection_exists", None)
+    if exists is not None:
+        return bool(exists(name))
+    return name in {c.name for c in client.get_collections().collections}
+
+
 def ensure_collection(
     client: QdrantClient,
     collection_name: str = COLLECTION_NAME,
 ) -> None:
     """Create collection if it does not exist."""
-    existing = {c.name for c in client.get_collections().collections}
-    if collection_name in existing:
+    if _collection_exists(client, collection_name):
         return
     print(f"Creating collection '{collection_name}' …")
     client.create_collection(
