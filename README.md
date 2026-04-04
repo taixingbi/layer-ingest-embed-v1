@@ -12,16 +12,19 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Create `.env`:
+Create `.env` with **all** of the following (no defaults in code; startup fails if any required variable is missing or empty):
 
-| Variable         | Description                    |
-|------------------|--------------------------------|
-| `QDRANT_URL`     | Qdrant URL (default: local)    |
-| `QDRANT_API_KEY` | API key for Qdrant Cloud      |
-| `EMBEDDING_URL`         | Embedding API base URL                    |
-| `EMBEDDING_MODEL`       | Model name (default: BAAI/bge-m3)         |
-| `EMBEDDING_INTERNAL_KEY`| Sent as `X-Internal-Key` if set (often required) |
-| `VECTOR_SIZE`           | Embedding dim (default: 1024)             |
+| Variable                | Description                                      |
+|-------------------------|--------------------------------------------------|
+| `QDRANT_URL`            | Qdrant URL                                       |
+| `QDRANT_API_KEY`        | Optional; omit or leave empty for local Qdrant   |
+| `EMBEDDING_URL`         | Embedding API base URL                           |
+| `EMBEDDING_MODEL`       | e.g. `BAAI/bge-m3`                               |
+| `EMBEDDING_INTERNAL_KEY`| Sent as `X-Internal-Key`                         |
+| `COLLECTION_NAME`       | Default collection (CLI `--collection` overrides) |
+| `DATA_DIR`              | Default data directory (CLI `--data-dir` overrides) |
+| `VECTOR_SIZE`           | Embedding dimension (integer)                    |
+| `BATCH_SIZE`            | Qdrant upsert batch size (integer)               |
 
 Each embedding HTTP call sends fresh random UUIDs for `X-Request-Id` and `X-Session-Id`.
 
