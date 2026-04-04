@@ -8,7 +8,7 @@ from qdrant_client.http.models import PointStruct
 from config import VECTOR_SIZE
 from embed import embed_text
 from payload import build_payload
-from text_utils import record_to_text
+from text_utils import embedding_text
 
 
 def _parse_json_file(path: Path) -> list[dict]:
@@ -68,11 +68,12 @@ def iter_records(data_dir: str):
             embedding = record.get("embedding")
             if not embedding or len(embedding) != VECTOR_SIZE:
                 try:
-                    embedding = embed_text(record_to_text(record))
+                    embedding = embed_text(embedding_text(record))
                 except Exception as e:
                     print(f"    ⚠ Skipping: {e}")
                     continue
-            point_id = int(hashlib.md5(f"{source_file}_{i}".encode()).hexdigest()[:16], 16)
+            stable = str(record.get("id") or f"{source_file}_{i}")
+            point_id = int(hashlib.md5(stable.encode()).hexdigest()[:16], 16)
             payload = build_payload(
                 record, source_file=source_file, record_type=record_type
             )

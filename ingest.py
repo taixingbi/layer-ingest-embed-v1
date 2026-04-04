@@ -2,7 +2,7 @@
 Qdrant collection setup and batch ingestion.
 """
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, FieldCondition, Filter, MatchValue, PointStruct, VectorParams
+from qdrant_client.http.models import Distance, FieldCondition, Filter, MatchValue, VectorParams
 
 from config import BATCH_SIZE, COLLECTION_NAME, VECTOR_SIZE
 from records import iter_records
