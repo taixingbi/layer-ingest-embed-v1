@@ -1,0 +1,42 @@
+[
+  {
+    "id": "resume_chunk_001",
+    "text": "Taixing Bi is an AI Infrastructure Engineer with 7+ years of experience building production LLM systems, including RAG pipelines, multi-agent orchestration (LangGraph), and LLM evaluation/observability (LangSmith). Taixing has deployed low-latency inference services and built scalable data/streaming platforms using AWS and Kafka.\n\nTaixing Bi has a publication titled 'A Novel Approach to Impedance-based Fault Location for High Voltage Cables', published at IEEE IAS in 2012.",
+    "category": "resume",
+    "tags": [
+      "bio",
+      "candidate-summary",
+      "llm",
+      "rag",
+      "agents",
+      "ai-infrastructure",
+      "kafka",
+      "aws",
+      "ieee",
+      "publication",
+      "research",
+      "power-systems"
+    ],
+    "metadata": {
+      "source": "resume.json",
+      "date": "2026-02-15",
+      "author": "Taixing Bi",
+      "dataset_notes": "Structured knowledge extracted from resume.txt",
+      "search_keywords": [
+        "AI infrastructure engineer",
+        "LLM systems",
+        "RAG pipelines",
+        "LangGraph agents",
+        "LangSmith evaluation",
+        "low latency inference",
+        "publication",
+        "IEEE",
+        "paper",
+        "research",
+        "fault location",
+        "high voltage",
+        "impedance"
+      ]
+    }
+  }
+]

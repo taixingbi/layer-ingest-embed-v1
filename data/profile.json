@@ -1,0 +1,102 @@
+[
+  {
+    "id": "profile_001",
+    "question": "What is the candidate's current role?",
+    "answer": "AI Infrastructure Engineer",
+    "category": "qa",
+    "tags": ["taixing-bi", "current-role", "ai-infra"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_002",
+    "question": "Where is the candidate currently working?",
+    "answer": "Saks",
+    "category": "qa",
+    "tags": ["taixing-bi", "employer", "current-company"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_003",
+    "question": "What work locations is the candidate open to?",
+    "answer": "Remote, Hybrid, or Office",
+    "category": "qa",
+    "tags": ["taixing-bi", "work-location", "remote", "hybrid"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_004",
+    "question": "What is the candidate's expected compensation range?",
+    "answer": "$180,000 – $240,000 USD",
+    "category": "qa",
+    "tags": ["taixing-bi", "salary", "compensation"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_005",
+    "question": "What is the candidate's visa status?",
+    "answer": "H4 EAD",
+    "category": "qa",
+    "tags": ["taixing-bi", "visa", "work-authorization", "h4-ead"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_006",
+    "question": "Does the candidate require visa sponsorship?",
+    "answer": "No",
+    "category": "qa",
+    "tags": ["taixing-bi", "visa-sponsorship", "no-sponsorship-required"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_007",
+    "question": "What roles is the candidate targeting?",
+    "answer": "AI Infra / Backend / LLM Engineer",
+    "category": "qa",
+    "tags": ["taixing-bi", "target-role", "ai-infra", "llm", "backend"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_008",
+    "question": "What is the candidate's LinkedIn profile?",
+    "answer": "https://www.linkedin.com/in/taixing-bi-757a4961/",
+    "category": "qa",
+    "tags": ["taixing-bi", "linkedin", "contact"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_009",
+    "question": "What is the candidate's phone number?",
+    "answer": "347-560-4308",
+    "category": "qa",
+    "tags": ["taixing-bi", "phone", "contact"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  },
+  {
+    "id": "profile_010",
+    "question": "What is the candidate's email address?",
+    "answer": "taixingbijob@gmail.com",
+    "category": "qa",
+    "tags": ["taixing-bi", "email", "contact"],
+    "source": "profile.json",
+    "date": "2026-04-04",
+    "author": "Taixing Bi"
+  }
+]
